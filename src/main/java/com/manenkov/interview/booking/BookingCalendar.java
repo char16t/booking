@@ -3,7 +3,6 @@ package com.manenkov.interview.booking;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,23 +12,16 @@ import java.util.List;
 @EqualsAndHashCode
 public final class BookingCalendar {
     /**
-     * Date.
+     * Groups of events by day.
      */
-    private final Date date;
-
-    /**
-     * Booking calendar items.
-     */
-    private final List<Event> events;
+    private final List<BookingCalendarGroup> groups;
 
     /**
      * Ctor.
      *
-     * @param date Day
-     * @param events Booking calendar items.
+     * @param groups Groups of events by day.
      */
-    public BookingCalendar(final Date date, final List<Event> events) {
-        this.date = date;
-        this.events = events;
+    public BookingCalendar(List<BookingCalendarGroup> groups) {
+        this.groups = groups;
     }
 }
