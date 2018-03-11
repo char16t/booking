@@ -1,7 +1,6 @@
 package com.manenkov.interview.booking;
 
 import lombok.EqualsAndHashCode;
-import lombok.Generated;
 import lombok.Getter;
 
 import java.util.Date;
@@ -29,15 +28,22 @@ public final class BookingRequest {
     private final String employee;
 
     /**
+     * Meeting duration
+     */
+    private final Integer duration;
+
+    /**
      * Ctor.
      *
      * @param submissionTime Submission time.
      * @param startTime Start time.
      * @param employee Employee's identifier.
+     * @param duration Meeting duration.
      */
-    public BookingRequest(final Date submissionTime, final Date startTime, final String employee) {
+    public BookingRequest(final Date submissionTime, final Date startTime, final String employee, final Integer duration) {
         this.submissionTime = submissionTime;
         this.startTime = startTime;
         this.employee = employee;
+        this.duration = duration;
     }
 }
