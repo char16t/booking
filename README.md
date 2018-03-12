@@ -3,7 +3,7 @@
 ## Build
 
 ```
-mvn clean package
+mvn clean install spring-boot:repackage
 ```
 
 ## Run
