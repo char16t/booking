@@ -11,14 +11,25 @@ import java.util.List;
 /**
  * Booking calendar.
  */
-@NoArgsConstructor
 public final class BookingCalendar {
 
     /**
      * Groups of events by day.
      */
     @JsonProperty("calendar")
-    private final List<Day> days = new LinkedList<>();
+    private final List<Day> days;
+
+    public BookingCalendar() {
+        this(new LinkedList<>());
+    }
+
+    public BookingCalendar(final Day... days) {
+        this(Arrays.asList(days));
+    }
+
+    public BookingCalendar(final List<Day> days) {
+        this.days = days;
+    }
 
     public List<Day> getDays() {
         return Collections.unmodifiableList(days);

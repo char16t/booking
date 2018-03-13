@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -34,4 +35,10 @@ public final class Batch {
      */
     @JsonProperty("booking_requests")
     private final List<BookingRequest> bookingRequests;
+
+    public Batch(final LocalTime startOfficeHours,
+                 final LocalTime endOfficeHours,
+                 final BookingRequest... bookingRequests) {
+        this(startOfficeHours, endOfficeHours, Arrays.asList(bookingRequests));
+    }
 }
