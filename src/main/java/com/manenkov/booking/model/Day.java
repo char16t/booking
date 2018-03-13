@@ -23,6 +23,11 @@ public class Day {
     @JsonProperty("meetings")
     private final List<Meeting> meetings;
 
+    public Day(final LocalDate day, final Meeting... meetings) {
+        this.day = day;
+        this.meetings = Arrays.asList(meetings);
+    }
+
     public void addMeetings(final Meeting... meetings) {
         addMeetings(Arrays.asList(meetings));
     }

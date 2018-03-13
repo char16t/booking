@@ -19,7 +19,15 @@ import java.util.stream.Collectors;
 @Service
 public class BookingService {
 
-    private final BookingCalendar calendar = new BookingCalendar();
+    private final BookingCalendar calendar;
+
+    public BookingService() {
+        this(new BookingCalendar());
+    }
+
+    public BookingService(final BookingCalendar calendar) {
+        this.calendar = calendar;
+    }
 
     public Day getMeetings(final LocalDate date) {
         return calendar.getDays().stream()
