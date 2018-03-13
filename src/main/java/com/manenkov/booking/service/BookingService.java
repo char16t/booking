@@ -33,9 +33,9 @@ public class BookingService {
             batch.getBookingRequests().stream()
                 .collect(Collectors.groupingBy(request ->
                     request.getMeetingTime()
-                    .toInstant(ZoneOffset.UTC)
-                    .atZone(ZoneId.systemDefault())
-                    .toLocalDate()
+                        .toInstant(ZoneOffset.UTC)
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDate()
                 ));
 
         requestsByDay.forEach((date, requests) -> {

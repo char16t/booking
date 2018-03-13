@@ -12,7 +12,7 @@ import java.time.LocalTime;
 
 @Getter
 @AllArgsConstructor
-@EqualsAndHashCode(of = { "start", "end" })
+@EqualsAndHashCode(of = {"start", "end"})
 public final class Meeting implements Comparable {
     @JsonFormat(pattern = "HH:mm")
     @JsonProperty("start_time")

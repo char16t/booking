@@ -16,8 +16,11 @@ import java.nio.charset.Charset;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 @RunWith(SpringRunner.class)
@@ -51,32 +54,32 @@ public class BookingControllerTest {
     @Test
     public void processBatchTest() throws Exception {
         mockMvc.perform(post("/booking").contentType(contentType).content("{\n" +
-                "  \"start_office_hours\": \"0900\",\n" +
-                "  \"end_office_hours\": \"1730\",\n" +
-                "  \"booking_requests\": [\n" +
-                "  \t{\n" +
-                "    \"submission_time\": \"2011-03-17 10:17:06\",\n" +
-                "    \"employee_id\": \"EMP001\",\n" +
-                "    \"meeting_time\": \"2011-03-21 09:00\",\n" +
-                "    \"duration\": 2\n" +
-                "  },\n" +
-                "  {\n" +
-                "    \"submission_time\": \"2011-03-17 10:17:12\",\n" +
-                "    \"employee_id\": \"EMP002\",\n" +
-                "    \"meeting_time\": \"2011-03-21 14:00\",\n" +
-                "    \"duration\": 2\n" +
-                "  },\n" +
-                "  {\n" +
-                "    \"submission_time\": \"2011-03-17 10:17:13\",\n" +
-                "    \"employee_id\": \"EMP002\",\n" +
-                "    \"meeting_time\": \"2011-03-22 14:00\",\n" +
-                "    \"duration\": 3\n" +
-                "  }]\n" +
-                "}"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.calendar", hasSize(2)))
-                .andExpect(jsonPath("$.calendar[0].day", is("2011-03-22")))
-                .andExpect(jsonPath("$.calendar[0].meetings", hasSize(1)));
+            "  \"start_office_hours\": \"0900\",\n" +
+            "  \"end_office_hours\": \"1730\",\n" +
+            "  \"booking_requests\": [\n" +
+            "  \t{\n" +
+            "    \"submission_time\": \"2011-03-17 10:17:06\",\n" +
+            "    \"employee_id\": \"EMP001\",\n" +
+            "    \"meeting_time\": \"2011-03-21 09:00\",\n" +
+            "    \"duration\": 2\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"submission_time\": \"2011-03-17 10:17:12\",\n" +
+            "    \"employee_id\": \"EMP002\",\n" +
+            "    \"meeting_time\": \"2011-03-21 14:00\",\n" +
+            "    \"duration\": 2\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"submission_time\": \"2011-03-17 10:17:13\",\n" +
+            "    \"employee_id\": \"EMP002\",\n" +
+            "    \"meeting_time\": \"2011-03-22 14:00\",\n" +
+            "    \"duration\": 3\n" +
+            "  }]\n" +
+            "}"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.calendar", hasSize(2)))
+            .andExpect(jsonPath("$.calendar[0].day", is("2011-03-22")))
+            .andExpect(jsonPath("$.calendar[0].meetings", hasSize(1)));
     }
 
 }

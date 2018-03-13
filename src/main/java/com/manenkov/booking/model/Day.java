@@ -14,7 +14,7 @@ import java.util.List;
 
 @Getter
 @AllArgsConstructor
-@EqualsAndHashCode(of = { "day" })
+@EqualsAndHashCode(of = {"day"})
 public class Day {
 
     @JsonProperty("day")
