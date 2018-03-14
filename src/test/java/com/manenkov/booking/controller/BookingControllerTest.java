@@ -93,6 +93,7 @@ public class BookingControllerTest {
             .andExpect(jsonPath("$.calendar", hasSize(2)))
             .andExpect(jsonPath("$.calendar[0].day", is("2011-03-21")))
             .andExpect(jsonPath("$.calendar[0].meetings", hasSize(1)))
+            .andExpect(jsonPath("$.calendar[0].meetings[0].employee_id", is("EMP002")))
             .andExpect(jsonPath("$.calendar[1].day", is("2011-03-22")))
             .andExpect(jsonPath("$.calendar[1].meetings", hasSize(2)));;
     }

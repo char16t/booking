@@ -53,7 +53,11 @@ public class BookingService {
                 .collect(Collectors.toList());
 
             // Remove overlaps
-            final List<BookingRequest> sortedRequests = validRequests.stream().sorted(Comparator.comparing(BookingRequest::getMeetingTime)).collect(Collectors.toList());
+            final List<BookingRequest> sortedRequests = validRequests.stream()
+                .sorted(
+                    Comparator.comparing(BookingRequest::getMeetingTime)
+                    .thenComparing(BookingRequest::getSubmissionTime)
+                ).collect(Collectors.toList());
             BookingRequest previous = new BookingRequest(LocalDateTime.MIN, "", LocalDateTime.MIN, 0);
             BookingRequest current;
             for (final BookingRequest request : sortedRequests) {
