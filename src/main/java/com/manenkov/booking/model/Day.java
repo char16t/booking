@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode(of = {"day"})
-public class Day {
+public class Day implements Comparable {
 
     @JsonProperty("day")
     private final LocalDate day;
@@ -43,6 +43,11 @@ public class Day {
         if (!this.meetings.contains(m)) {
             this.meetings.add(m);
         }
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return o instanceof Day ? this.day.compareTo(((Day) o).getDay()) : -1;
     }
 
     public static class Null extends Day {

@@ -57,29 +57,44 @@ public class BookingControllerTest {
             "  \"start_office_hours\": \"0900\",\n" +
             "  \"end_office_hours\": \"1730\",\n" +
             "  \"booking_requests\": [\n" +
-            "  \t{\n" +
+            "  {\n" +
             "    \"submission_time\": \"2011-03-17 10:17:06\",\n" +
             "    \"employee_id\": \"EMP001\",\n" +
             "    \"meeting_time\": \"2011-03-21 09:00\",\n" +
             "    \"duration\": 2\n" +
             "  },\n" +
             "  {\n" +
-            "    \"submission_time\": \"2011-03-17 10:17:12\",\n" +
+            "    \"submission_time\": \"2011-03-16 09:28:23\",\n" +
             "    \"employee_id\": \"EMP002\",\n" +
-            "    \"meeting_time\": \"2011-03-21 14:00\",\n" +
+            "    \"meeting_time\": \"2011-03-21 09:00\",\n" +
             "    \"duration\": 2\n" +
             "  },\n" +
             "  {\n" +
-            "    \"submission_time\": \"2011-03-17 10:17:13\",\n" +
-            "    \"employee_id\": \"EMP002\",\n" +
+            "    \"submission_time\": \"2011-03-16 12:34:56\",\n" +
+            "    \"employee_id\": \"EMP003\",\n" +
             "    \"meeting_time\": \"2011-03-22 14:00\",\n" +
+            "    \"duration\": 2\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"submission_time\": \"2011-03-17 11:23:45\",\n" +
+            "    \"employee_id\": \"EMP004\",\n" +
+            "    \"meeting_time\": \"2011-03-22 16:00\",\n" +
+            "    \"duration\": 1\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"submission_time\": \"2011-03-15 17:29:12\",\n" +
+            "    \"employee_id\": \"EMP005\",\n" +
+            "    \"meeting_time\": \"2011-03-21 16:00\",\n" +
             "    \"duration\": 3\n" +
-            "  }]\n" +
+            "  }\n" +
+            "  ]\n" +
             "}"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.calendar", hasSize(2)))
-            .andExpect(jsonPath("$.calendar[0].day", is("2011-03-22")))
-            .andExpect(jsonPath("$.calendar[0].meetings", hasSize(1)));
+            .andExpect(jsonPath("$.calendar[0].day", is("2011-03-21")))
+            .andExpect(jsonPath("$.calendar[0].meetings", hasSize(1)))
+            .andExpect(jsonPath("$.calendar[1].day", is("2011-03-22")))
+            .andExpect(jsonPath("$.calendar[1].meetings", hasSize(2)));;
     }
 
 }

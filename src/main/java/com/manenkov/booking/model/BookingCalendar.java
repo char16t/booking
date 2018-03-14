@@ -43,6 +43,7 @@ public final class BookingCalendar {
         for (final Day day : days) {
             addDay(day);
         }
+        Collections.sort(this.days);
     }
 
     private void addDay(Day d) {
